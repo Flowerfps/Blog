@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>技術で飯を食えるようになるために</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <!-- ヘッダー -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="#home">修BLOG</a>
+                </div>
+                <nav class="nav">
+                    <ul class="nav-menu">
+                        <li><a href="#home" class="nav-link active">ホーム</a></li>
+                        <li><a href="#articles" class="nav-link">記事一覧</a></li>
+                        <li><a href="#categories" class="nav-link">カテゴリー</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <div class="search-container">
+                        <input type="text" id="searchInput" class="search-input" placeholder="記事を検索...">
+                        <span class="search-icon">🔍</span>
+                    </div>
+                    <button class="theme-toggle" id="themeToggle" aria-label="テーマ切り替え">
+                        <span class="theme-icon">🌙</span>
+                    </button>
+                    <button class="hamburger" id="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ヒーローセクション -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="gradient-text">技術で飯を食いたい</span>
+                </h1>
+                <p class="hero-subtitle">最近学んだことをを共有</p>
+                <p class="hero-description">
+                    プログラミング、Web開発、技術的な知見を分かりやすく解説します。
+                    初心者から上級者まで、すべての開発者に役立つ情報をお届けします。
+                </p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number" id="articleCount">0</div>
+                        <div class="stat-label">記事</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="categoryCount">0</div>
+                        <div class="stat-label">カテゴリー</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="tagCount">0</div>
+                        <div class="stat-label">タグ</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- フィルターセクション -->
+    <section class="filters">
+        <div class="container">
+            <div class="filter-content">
+                <div class="category-filter">
+                    <h3>カテゴリー</h3>
+                    <div class="filter-buttons" id="categoryFilters">
+                        <button class="filter-btn active" data-category="all">すべて</button>
+                    </div>
+                </div>
+                <div class="tag-filter">
+                    <h3>タグ</h3>
+                    <div class="tag-cloud" id="tagCloud">
+                        <!-- タグはJavaScriptで動的に生成 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 記事一覧セクション -->
+    <section id="articles" class="articles">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">最新記事</h2>
+                <div class="view-toggle">
+                    <button class="view-btn active" data-view="grid" aria-label="グリッド表示">⊞</button>
+                    <button class="view-btn" data-view="list" aria-label="リスト表示">☰</button>
+                </div>
+            </div>
+            <div class="articles-grid" id="articlesGrid">
+                <!-- 記事カードはJavaScriptで動的に生成 -->
+            </div>
+            <div class="no-results" id="noResults" style="display: none;">
+                <p>記事が見つかりませんでした</p>
+            </div>
+            <div class="pagination" id="pagination">
+                <!-- ページネーションはJavaScriptで動的に生成 -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 記事詳細モーダル -->
+    <div class="modal" id="articleModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <article class="article-detail" id="articleDetail">
+                <!-- 記事詳細はJavaScriptで動的に生成 -->
+            </article>
+        </div>
+    </div>
+
+    <!-- フッター -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>技術で飯を食えるようになるために</h3>
+                    <p>技術的な知見を共有するブログです</p>
+                </div>
+                <div class="footer-section">
+                    <h4>リンク</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">ホーム</a></li>
+                        <li><a href="#articles">記事一覧</a></li>
+                        <li><a href="#categories">カテゴリー</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>ソーシャル</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link">GitHub</a>
+                        <a href="#" class="social-link">Twitter</a>
+                        <a href="#" class="social-link">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 技術で飯を食えるようになるために. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
