@@ -1,385 +1,49 @@
 // サンプル記事データ
 const articles = [
-    {
-        id: 1,
-        title: 'React Hooks完全ガイド：useStateとuseEffectの使い方',
-        excerpt: 'React Hooksの基本から応用まで、useStateとuseEffectを中心に詳しく解説します。実践的な例を交えながら、モダンなReact開発のベストプラクティスを学びましょう。',
-        content: `
-# React Hooks完全ガイド
-
-React Hooksは、関数コンポーネントで状態管理やライフサイクル機能を使用できるようにする機能です。
-
-## useStateとは
-
-\`useState\`は、関数コンポーネントで状態を管理するためのフックです。
-
-\`\`\`javascript
-import { useState } from 'react';
-
-function Counter() {
-  const [count, setCount] = useState(0);
-  
-  return (
-    <div>
-      <p>カウント: {count}</p>
-      <button onClick={() => setCount(count + 1)}>
-        増やす
-      </button>
-    </div>
-  );
-}
-\`\`\`
-
-## useEffectとは
-
-\`useEffect\`は、副作用を処理するためのフックです。コンポーネントのマウント時や更新時に実行されます。
-
-\`\`\`javascript
-import { useState, useEffect } from 'react';
-
-function DataFetcher() {
-  const [data, setData] = useState(null);
-  
-  useEffect(() => {
-    fetch('/api/data')
-      .then(res => res.json())
-      .then(data => setData(data));
-  }, []);
-  
-  return <div>{data && <p>{data.message}</p>}</div>;
-}
-\`\`\`
-
-## まとめ
-
-React Hooksを使うことで、より簡潔で読みやすいコードを書くことができます。
-        `,
-        category: 'React',
-        tags: ['React', 'JavaScript', 'Hooks', 'フロントエンド'],
-        date: '2024-01-15',
-        readTime: 8,
-        thumbnail: '⚛️'
-    },
-    {
-        id: 2,
-        title: 'TypeScriptで型安全なAPIクライアントを構築する',
-        excerpt: 'TypeScriptの型システムを活用して、安全で保守性の高いAPIクライアントを作成する方法を解説します。型定義からエラーハンドリングまで、実践的なテクニックを紹介します。',
-        content: `
-# TypeScriptで型安全なAPIクライアントを構築する
-
-TypeScriptを使うことで、APIクライアントの型安全性を大幅に向上させることができます。
-
-## 型定義の作成
-
-まず、APIレスポンスの型を定義します。
-
-\`\`\`typescript
-interface User {
-  id: number;
-  name: string;
-  email: string;
-}
-
-interface ApiResponse<T> {
-  data: T;
-  status: number;
-  message: string;
-}
-\`\`\`
-
-## APIクライアントの実装
-
-型安全なAPIクライアントを実装します。
-
-\`\`\`typescript
-async function fetchUser(id: number): Promise<ApiResponse<User>> {
-  const response = await fetch(\`/api/users/\${id}\`);
-  const data: ApiResponse<User> = await response.json();
-  return data;
-}
-\`\`\`
-
-## エラーハンドリング
-
-適切なエラーハンドリングを追加します。
-
-\`\`\`typescript
-try {
-  const result = await fetchUser(1);
-  console.log(result.data);
-} catch (error) {
-  console.error('エラーが発生しました:', error);
-}
-\`\`\`
-        `,
-        category: 'TypeScript',
-        tags: ['TypeScript', 'API', '型安全', 'バックエンド'],
-        date: '2024-01-20',
-        readTime: 12,
-        thumbnail: '📘'
-    },
-    {
-        id: 3,
-        title: 'CSS GridとFlexboxを使ったモダンなレイアウト設計',
-        excerpt: 'CSS GridとFlexboxを組み合わせて、レスポンシブで美しいレイアウトを作成する方法を学びます。実践的な例を通じて、モダンなCSSの使い方をマスターしましょう。',
-        content: `
-# CSS GridとFlexboxを使ったモダンなレイアウト設計
-
-CSS GridとFlexboxを組み合わせることで、複雑なレイアウトも簡単に作成できます。
-
-## CSS Gridの基本
-
-CSS Gridは、2次元のレイアウトシステムです。
-
-\`\`\`css
-.container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-\`\`\`
-
-## Flexboxの基本
-
-Flexboxは、1次元のレイアウトシステムです。
-
-\`\`\`css
-.flex-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-\`\`\`
-
-## 組み合わせの例
-
-GridとFlexboxを組み合わせた実践的な例です。
-
-\`\`\`css
-.page-layout {
-  display: grid;
-  grid-template-columns: 250px 1fr;
-  grid-template-rows: auto 1fr auto;
-  min-height: 100vh;
-}
-
-.header {
-  grid-column: 1 / -1;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-\`\`\`
-        `,
-        category: 'CSS',
-        tags: ['CSS', 'Grid', 'Flexbox', 'レイアウト', 'デザイン'],
-        date: '2024-01-25',
-        readTime: 10,
-        thumbnail: '🎨'
-    },
-    {
-        id: 4,
-        title: 'Node.jsとExpressでRESTful APIを構築する',
-        excerpt: 'Node.jsとExpressフレームワークを使用して、RESTful APIを構築する方法を解説します。ルーティング、ミドルウェア、エラーハンドリングなど、実践的な内容をカバーします。',
-        content: `
-# Node.jsとExpressでRESTful APIを構築する
-
-Expressは、Node.jsで最も人気のあるWebフレームワークの一つです。
-
-## Expressのセットアップ
-
-まず、Expressをインストールします。
-
-\`\`\`bash
-npm init -y
-npm install express
-\`\`\`
-
-## 基本的なサーバー
-
-シンプルなExpressサーバーを作成します。
-
-\`\`\`javascript
-const express = require('express');
-const app = express();
-
-app.use(express.json());
-
-app.get('/', (req, res) => {
-  res.json({ message: 'Hello World!' });
-});
-
-app.listen(3000, () => {
-  console.log('Server is running on port 3000');
-});
-\`\`\`
-
-## RESTfulエンドポイント
-
-RESTfulなAPIエンドポイントを作成します。
-
-\`\`\`javascript
-app.get('/api/users', (req, res) => {
-  res.json({ users: [] });
-});
-
-app.post('/api/users', (req, res) => {
-  const user = req.body;
-  res.status(201).json({ user });
-});
-
-app.put('/api/users/:id', (req, res) => {
-  const { id } = req.params;
-  res.json({ id, updated: true });
-});
-
-app.delete('/api/users/:id', (req, res) => {
-  const { id } = req.params;
-  res.status(204).send();
-});
-\`\`\`
-        `,
-        category: 'Node.js',
-        tags: ['Node.js', 'Express', 'API', 'バックエンド', 'REST'],
-        date: '2024-02-01',
-        readTime: 15,
-        thumbnail: '🚀'
-    },
-    {
-        id: 5,
-        title: 'Gitのベストプラクティス：コミットメッセージとブランチ戦略',
-        excerpt: '効果的なGitの使い方を学びます。意味のあるコミットメッセージの書き方から、Git FlowやGitHub Flowなどのブランチ戦略まで、実践的なベストプラクティスを紹介します。',
-        content: `
-# Gitのベストプラクティス
-
-Gitを効果的に使うことで、チーム開発の効率が大幅に向上します。
-
-## コミットメッセージの書き方
-
-良いコミットメッセージは、変更の意図を明確に伝えます。
-
-\`\`\`
-feat: ユーザー認証機能を追加
-
-- ログイン機能を実装
-- セッション管理を追加
-- パスワードリセット機能を追加
-\`\`\`
-
-## ブランチ戦略
-
-### Git Flow
-
-Git Flowは、長期的なリリースサイクルに適した戦略です。
-
-- \`main\`: 本番環境用
-- \`develop\`: 開発用
-- \`feature/\`: 機能開発用
-- \`release/\`: リリース準備用
-- \`hotfix/\`: 緊急修正用
-
-### GitHub Flow
-
-GitHub Flowは、シンプルで柔軟な戦略です。
-
-1. ブランチを作成
-2. 変更をコミット
-3. プルリクエストを作成
-4. レビューとマージ
-
-## まとめ
-
-適切なGitの使い方を身につけることで、チーム開発がスムーズになります。
-        `,
-        category: 'Git',
-        tags: ['Git', 'バージョン管理', '開発ツール', 'ベストプラクティス'],
-        date: '2024-02-05',
-        readTime: 7,
-        thumbnail: '🔧'
-    },
-    {
-        id: 6,
-        title: 'Vue.js 3 Composition API入門',
-        excerpt: 'Vue.js 3のComposition APIについて、基本から応用まで詳しく解説します。Options APIとの違いや、いつComposition APIを使うべきかも説明します。',
-        content: `
-# Vue.js 3 Composition API入門
-
-Composition APIは、Vue.js 3で導入された新しいAPIです。
-
-## Composition APIとは
-
-Composition APIは、ロジックの再利用性とコードの整理を向上させるAPIです。
-
-\`\`\`javascript
-import { ref, computed, onMounted } from 'vue';
-
-export default {
-  setup() {
-    const count = ref(0);
-    const doubleCount = computed(() => count.value * 2);
-    
-    const increment = () => {
-      count.value++;
-    };
-    
-    onMounted(() => {
-      console.log('コンポーネントがマウントされました');
-    });
-    
-    return {
-      count,
-      doubleCount,
-      increment
-    };
-  }
-};
-\`\`\`
-
-## Options APIとの比較
-
-Options APIとComposition APIの違いを理解しましょう。
-
-### Options API
-
-\`\`\`javascript
-export default {
-  data() {
-    return {
-      count: 0
-    };
-  },
-  computed: {
-    doubleCount() {
-      return this.count * 2;
-    }
-  }
-};
-\`\`\`
-
-### Composition API
-
-\`\`\`javascript
-import { ref, computed } from 'vue';
-
-export default {
-  setup() {
-    const count = ref(0);
-    const doubleCount = computed(() => count.value * 2);
-    return { count, doubleCount };
-  }
-};
-\`\`\`
-
-## まとめ
-
-Composition APIを使うことで、より柔軟で保守性の高いコードを書くことができます。
-        `,
-        category: 'Vue.js',
-        tags: ['Vue.js', 'JavaScript', 'フロントエンド', 'Composition API'],
-        date: '2024-02-10',
-        readTime: 9,
-        thumbnail: '💚'
-    }
+    // ============================================
+    // 📝 記事の雛形（テンプレート）
+    // ============================================
+    // 新しい記事を追加する際は、以下の雛形をコピーして使用してください
+    // この雛形はコメントアウトされているので、記事として表示されません
+    // 
+    // {
+    //     id: 1,  // 既存の最大ID + 1に変更してください
+    //     title: '記事のタイトルをここに書く',
+    //     excerpt: '記事の簡単な説明を50-150文字程度で書く。記事一覧ページで表示されます。',
+    //     content: `
+    // # 記事のタイトル
+    // 
+    // ここに記事の本文をMarkdown形式で書きます。
+    // 
+    // ## 見出し2
+    // 
+    // 段落を書くことができます。空行を入れると段落として認識されます。
+    // 
+    // ### 見出し3
+    // 
+    // - リスト項目1
+    // - リスト項目2
+    // - リスト項目3
+    // 
+    // **太字**や*斜体*も使えます。
+    // 
+    // \`\`\`javascript
+    // // コードブロックの例
+    // const example = 'Hello World';
+    // console.log(example);
+    // \`\`\`
+    // 
+    // コードブロックは、言語名を指定できます（javascript, python, css など）
+    //     `,
+    //     category: 'カテゴリー名',  // 例：'React', 'TypeScript', 'CSS' など
+    //     tags: ['タグ1', 'タグ2', 'タグ3'],  // 複数のタグを指定可能
+    //     date: '2024-02-15',  // YYYY-MM-DD形式で記入（例：'2024-02-15'）
+    //     readTime: 5,  // 読了時間（分）を推定して記入
+    //     thumbnail: '📝'  // 絵文字またはアイコン（例：'⚛️', '📘', '🎨' など）
+    // },
+    // ============================================
+    // ここから下に新しい記事を追加してください
+    // ============================================
 ];
 
 // アプリケーションの状態管理
