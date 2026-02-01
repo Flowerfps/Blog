@@ -6,7 +6,7 @@
 }
 
 :root {
-    /* ダークモード（デフォルト）- 高級感のあるカラーパレット */
+    /* ダークモード（デフォルト） */
     --bg-primary: #0a0a0a;
     --bg-secondary: #141414;
     --bg-tertiary: #1a1a1a;
@@ -30,7 +30,7 @@
 }
 
 [data-theme="light"] {
-    /* ライトモード - 上品なライトテーマ */
+    /* ライトモード */
     --bg-primary: #fafafa;
     --bg-secondary: #f5f5f5;
     --bg-tertiary: #f0f0f0;
